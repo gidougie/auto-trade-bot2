@@ -4,8 +4,8 @@ import time
 import pandas as pd
 from datetime import datetime
 
-access = "여기에 Access Key"
-secret = "여기에 Secret Key"
+access = "ZmpwaxjTwBgSZa6Ph1gTx02s1CihnGLP9b5gJmup"
+secret = "vkcxaPzDjtmNxb29lgMMSGCBtJZ0ZE99X8bE2Fxj"
 upbit = pyupbit.Upbit(access, secret)
 
 ticker = "KRW-BTC"
