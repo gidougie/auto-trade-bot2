@@ -40,8 +40,8 @@ while True:
 
         if now_price < prev_price * 0.993 and rsi < 30:
             print("🟢 매수 조건 만족!")
-            upbit.buy_market_order(ticker, 5000)
-            log_trade("매수", now_price, 5000 / now_price)
+            upbit.buy_market_order(ticker, 50000)
+            log_trade("매수", now_price, 50000 / now_price)
 
         elif now_price > prev_price * 1.012 and rsi > 70:
             print("🔴 매도 조건 만족!")
