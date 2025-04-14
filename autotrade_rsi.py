@@ -4,8 +4,8 @@ import pandas as pd
 from datetime import datetime
 
 # ✅ 너의 업비트 API 키 입력
-access = "ZmpwaxjTwBgSZa6Ph1gTx02s1CihnGLP9b5gJmup"
-secret = "vkcxaPzDjtmNxb29lgMMSGCBtJZ0ZE99X8bE2Fxj"
+access = "fmQ6nYgxfsHb7rBE48Os8cOsIMd60SDV5DrgVJGY"
+secret = "CJbtsyKmW0hmRvcbCHEpiunncbUHcom2XWF4JWfd"
 upbit = pyupbit.Upbit(access, secret)
 
 ticker = "KRW-BTC"
