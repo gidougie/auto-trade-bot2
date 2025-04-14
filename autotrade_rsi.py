@@ -3,7 +3,7 @@ import time
 import pandas as pd
 from datetime import datetime
 
-# ✅ 여기에 네 업비트 API 키 넣기
+# ✅ 너의 업비트 API 키 입력
 access = "fmQ6nYgxfsHb7rBE48Os8cOsIMd60SDV5DrgVJGY"
 secret = "CJbtsyKmW0hmRvcbCHEpiunncbUHcom2XWF4JWfd"
 upbit = pyupbit.Upbit(access, secret)
@@ -35,14 +35,17 @@ while True:
         rsi = get_rsi(ticker)
 
         print(f"[LOG] 현재가: {now_price}, 이전가: {prev_price}, RSI: {rsi:.2f}")
+        print(f"[BOT] 실행 중... ({datetime.now().strftime('%H:%M:%S')})")  # ✅ 서버 유지용 로그
 
-        if now_price < prev_price * 0.993 and rsi < 30:
-            print("🟢 매수 조건 만족!")
-            upbit.buy_market_order(ticker, 5000)
-            log_trade("매수", now_price, 5000 / now_price)
+        # 🟢 공격적 매수 조건
+        if now_price < prev_price * 0.997 and rsi < 50:
+            print("🟢 공격적 매수 조건 만족!")
+            upbit.buy_market_order(ticker, 50000)
+            log_trade("매수", now_price, 50000 / now_price)
 
-        elif now_price > prev_price * 1.012 and rsi > 70:
-            print("🔴 매도 조건 만족!")
+        # 🔴 공격적 매도 조건
+        elif now_price > prev_price * 1.006 and rsi > 55:
+            print("🔴 공격적 매도 조건 만족!")
             btc_balance = upbit.get_balance("BTC")
             if btc_balance > 0.00008:
                 upbit.sell_market_order(ticker, btc_balance)
