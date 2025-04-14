@@ -16,7 +16,7 @@ def log_trade(action, price, volume):
     df.to_csv("trading_log.csv", mode='a', header=False, index=False)
     print(f"[{action}] {price}원 | 수량: {volume:.6f} 저장 완료 ✅")
 
-def get_rsi(ticker, interval="minute5", period=14):
+def get_rsi(ticker, interval="minute1", period=14):
     df = pyupbit.get_ohlcv(ticker, interval=interval, count=200)
     delta = df['close'].diff()
     gain = delta.where(delta > 0, 0)
@@ -31,7 +31,7 @@ def get_rsi(ticker, interval="minute5", period=14):
 
 while True:
     try:
-        df = pyupbit.get_ohlcv(ticker, interval="minute5", count=2)
+        df = pyupbit.get_ohlcv(ticker, interval="minute1", count=2)
         now_price = pyupbit.get_current_price(ticker)
         prev_price = df.iloc[-2]['close']
         rsi = get_rsi(ticker)
